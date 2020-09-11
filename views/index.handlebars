@@ -1,0 +1,51 @@
+<div class="row text-center">
+    <div class="col-12">
+        <img src="assets/img/burger.jpeg" alt="my double cheese burger" class="img-fluid mt-5">
+    </div>
+</div>
+
+<div class="row text-center mb-5">
+    <div class="col-12">
+        <h1 id="burger-title" class="text-danger">Eat The burger</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-4 text-left" id="burger">
+        {{#each burgers}}
+        {{#unless devoured}}
+        <h3 class="text-center text-primary bg-light border border-light">{{burger_name}}</h3>
+        <br>
+        {{/unless}}
+        {{/each}}
+    </div>
+    <div class="col-2 text-center" id="burger">
+        {{#each burgers}}
+        {{#unless devoured}}
+        <input type="text" id="eater-name{{id}}" placeholder=" eater name" class="form-control text-center" required>
+        <button id={{id}} type="button" class="btn btn-outline-primary btn-sm update-deboured">Devour It!</button>
+        {{/unless}}
+        {{/each}}
+    </div>
+    <div class="col-4 text-left" id="eaten-burger">
+        {{#each burgers}}
+        {{#if devoured}}
+        <h4 class="text-center text-danger bg-light border border-light">{{burger_name}} devaured by {{Customer.name}}
+        </h4>
+        {{/if}}
+        {{/each}}
+    </div>
+</div>
+<div class="row text-center m-5">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <form id="enter-burger">
+            <textarea id="new-burger" name="new-burger" row="4" cols="50"></textarea><br>
+            <button id="submit" type="submit" class="btn btn-info mt-2">Submit</button><br>
+            <label for="new-burger">
+                <h3>Enter a burger you want to eat Click then select <q>Submit</q> button</h3>
+            </label>
+        </form>
+    </div>
+</div>

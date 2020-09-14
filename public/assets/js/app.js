@@ -22,22 +22,24 @@ $(document).ready(function () {
   $(".update-devoured").on("click", function (event) {
     event.preventDefault();
     const id = $(this).attr("id");
-    const name = $(`#eater-name${id}`).val().trim();
-    const dataCustomer = { name: name };
+    const dataBurger = { id: id, devour_it: true };
+    $.ajax("/api/burgers", {
+      type: "PUT",
+      data: dataBurger,
+    }).then(function (result) {
+      window.location.href = "/";
+    });
+  });
+});
+$(".eaten-burger").on("click", function (event) {
+  var id = $(this).data("id");
 
-    if (name !== "") {
-      $.post("api/burgers", dataCustomer, function (result) {
-        const dataBurger = { id: id, CustomerId: result.id };
-        $.ajax("/api/burgers", {
-          type: "PUT",
-          data: dataBurger,
-        }).then(function (result) {
-          window.location.href = "/";
-        });
-      });
-    } else {
-      $(`#eater-name${id}`).attr("placeholder", "please enter name");
-      $(`#eater-name${id}`).focus();
-    }
+  // Send the DELETE request.
+  $.ajax("/api/burgers/" + id, {
+    type: "DELETE",
+  }).then(function () {
+    console.log("deleted burger", id);
+    // Reload the page to get the updated list
+    location.reload();
   });
 });

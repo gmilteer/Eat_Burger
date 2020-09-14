@@ -1,6 +1,7 @@
 <div class="row text-center">
     <div class="col-12">
-        <img src="assets/img/burger.jpeg" alt="my double cheese burger" class="img-fluid mt-5">
+        <img src="https://media.giphy.com/media/IgOEWPOgK6uVa/giphy.gif" my double cheese burger"
+            class="img-fluid mt-5">
     </div>
 </div>
 
@@ -11,28 +12,38 @@
 </div>
 
 <div class="row">
-    <div class="col-1"></div>
-    <div class="col-4 text-left" id="burger">
+    <div class="col-6 burgers">
+        <div class="row">
+            <h1>Burgers</h1>
+        </div>
         {{#each burgers}}
-        {{#unless devoured}}
-        <h3 class="text-center text-primary bg-light border border-light">{{burger_name}}</h3>
-        <br>
+        {{#unless devour_it}}
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-5 text-left" id="burger">
+                <h3 class="text-center text-primary bg-light border border-light">{{burger_name}}</h3>
+                <br>
+            </div>
+            <div class="col-6 text-center" id="burger">
+                <button id={{id}} type="button" class="btn btn-outline-primary btn-sm update-devoured">Devour
+                    It!</button>
+            </div>
+        </div>
         {{/unless}}
         {{/each}}
     </div>
-    <div class="col-2 text-center" id="burger">
+    <div class="col-6">
         {{#each burgers}}
-        {{#unless devoured}}
-        <input type="text" id="eater-name{{id}}" placeholder=" eater name" class="form-control text-center" required>
-        <button id={{id}} type="button" class="btn btn-outline-primary btn-sm update-deboured">Devour It!</button>
-        {{/unless}}
-        {{/each}}
-    </div>
-    <div class="col-4 text-left" id="eaten-burger">
-        {{#each burgers}}
-        {{#if devoured}}
-        <h4 class="text-center text-danger bg-light border border-light">{{burger_name}} devaured by {{Customer.name}}
-        </h4>
+        {{#if devour_it}}
+        <div class="row">
+            <h1> Devoured Burgers</h1>
+            <div class="col-12 text-center" id="eaten-burger">
+                <h4 class="text-center text-danger bg-light border border-light">{{burger_name}} Devoured!
+                </h4>
+                <button type="button" class="btn btn-outline-primary btn-sm delete-devoured"
+                    data-id="{{this.id}}">Delete</button>
+            </div>
+        </div>
         {{/if}}
         {{/each}}
     </div>

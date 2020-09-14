@@ -17,20 +17,39 @@ router.get("/", (req, res) => {
 });
 
 router.post("/api/burgers", (req, res) => {
-  console.log("This is req body", req.body);
-  burger.create(req.body.burger_name, function (res) {
-    console.log("this is the res", res);
-  });
-  burger.create([req.body.burger_name], function (result) {
+  burger.create(["burger_name"], [req.body.burger_name], function (result) {
     console.log("from create", req.body);
     // Send back the ID of the new quote
     res.json({ id: result.insertId });
   });
 });
 
-router.put("/api/burgers/:id", (req, res) => {
-  burger.update(req.params.id, (result) => {
-    if (result.changedRows == 0) {
+router.put("/api/burgers", (req, res) => {
+  var condition = "id = " + req.body.id;
+
+  console.log("condition", condition);
+
+  burger.update(
+    {
+      devour_it: req.body.devour_it,
+    },
+    condition,
+    function (result) {
+      if (result.changedRows == 0) {
+        // If no rows were changed, then the ID must not exist, so 404
+        return res.status(404).end();
+      } else {
+        res.status(200).end();
+      }
+    }
+  );
+});
+router.delete("/api/burgers/:id", function (req, res) {
+  var condition = "id = " + req.body.id;
+
+  burger.delete(condition, function (result) {
+    console.log(result);
+    if (result.affectedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
     } else {

@@ -22,7 +22,7 @@ After both installations are complete, run the following command in your termina
 npm start
 ```
 
-Your app should now be running on <http://localhost:3306>. The Express server should intercept any AJAX requests from the client.
+Your app should now be running on <http://localhost:8080>. The Express server should intercept any AJAX requests from the client.
 
 ## Deployment (Heroku)
 

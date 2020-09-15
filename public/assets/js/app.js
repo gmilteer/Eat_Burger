@@ -31,7 +31,8 @@ $(document).ready(function () {
     });
   });
 });
-$(".eaten-burger").on("click", function (event) {
+
+$(".delete-devoured").on("click", function (event) {
   var id = $(this).data("id");
 
   // Send the DELETE request.

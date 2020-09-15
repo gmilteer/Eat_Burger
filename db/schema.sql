@@ -1,6 +1,4 @@
-CREATE DATABASE
-IF NOT EXISTS eat_da_burger;
-
+DROP DATABASE IF EXISTS eat_da_burger;
 CREATE DATABASE eat_da_burger;
 USE eat_da_burger;
 
@@ -8,9 +6,9 @@ CREATE TABLE burgers
 (
 	id int NOT NULL
 	AUTO_INCREMENT,
-	burger_name varchar
+    burger_name varchar
 	(255) NOT NULL,
-	devour_it BOOLEAN DEFAULT false,
-	PRIMARY KEY
+    devour_it BOOLEAN DEFAULT false,
+    PRIMARY KEY
 	(id)
 );

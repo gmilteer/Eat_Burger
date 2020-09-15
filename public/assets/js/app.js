@@ -32,10 +32,10 @@ $(document).ready(function () {
   });
 
   $(".delete-devoured").on("click", function (event) {
-    var id = $(this).data("id");
+    var id = $(this).attr("id");
 
     // Send the DELETE request.
-    $.ajax("/api/burgers/" + id, {
+    $.ajax("/api/burgers", {
       type: "DELETE",
     }).then(function () {
       console.log("deleted burger", id);

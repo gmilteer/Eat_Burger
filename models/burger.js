@@ -18,8 +18,8 @@ var burger = {
       cb(res);
     });
   },
-  destroy: function (condition, cb) {
-    orm.detroy("burgers", condition, function (res) {
+  delete: function (condition, cb) {
+    orm.delete("burgers", condition, function (res) {
       cb(res);
     });
   },

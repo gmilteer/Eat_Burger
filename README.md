@@ -26,6 +26,8 @@ Your app should now be running on <http://localhost:8080>. The Express server sh
 
 ## Deployment (Heroku)
 
+[Eat Burger App](https://powerful-badlands-92622.herokuapp.com/)
+
 ## Built With
 
 ### for the back end server and data persistance
